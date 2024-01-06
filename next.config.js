@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-      domains: ['i.dummyjson.com'],
+      domains: ['i.dummyjson.com', 'fakestoreapi.com'],
       remotePatterns: [
         {
           protocol: 'https',

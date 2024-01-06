@@ -1,10 +1,10 @@
-import { CartItem } from "@/lib/zustand/store";
+import { Product } from "@/lib/zustand/store";
 import ProductItem from "@/components/ProductItem/ProductItem";
 import CartIcon from "@/components/cart/CartCount";
 
 // define the interface for the props
 interface ProductsPageProps {
-  products: CartItem[];
+  products: Product[];
 }
 
 // fetch data from dummyjson site at build time

@@ -1,12 +1,11 @@
 "use client";
-import React from "react";
-import { CartItem } from "@/lib/zustand/store";
+import { Product } from "@/lib/zustand/store";
 // import { Product } from "@/lib/types/product.type";
 
 import { useCartStore } from "@/lib/zustand/store";
 import Image from "next/image";
 interface ProductItemProps {
-  product: CartItem;
+  product: Product;
 }
 
 function ProductItem({ product }: ProductItemProps) {

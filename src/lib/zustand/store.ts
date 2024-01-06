@@ -2,7 +2,7 @@
 import { create } from "zustand";
 
 // Define the state and actions for the cart store
-export type CartItem = {
+export type Product = {
   id: string;
   title: string;
   description: string;
@@ -12,21 +12,29 @@ export type CartItem = {
 };
 
 export type CartState = {
-  items: CartItem[] | [];
+  items: Product[] | [];
+  products: Product[] | [];
   total: number;
-  itemCount: number; // Add a new property to store the number of items in the cart
-  addItem: (item: CartItem) => void;
+  itemCount: number;
+};
+export type CartAction = {
+  setProducts: (item: Product[]) => void;
+  addItem: (item: Product) => void;
   removeItem: (id: string) => void;
   clearCart: () => void;
   getCartCount: () => number;
 };
 
 // Create the cart store with an initial state
-export const useCartStore = create<CartState>((set, get) => ({
+export const useCartStore = create<CartState & CartAction>((set, get) => ({
   items: [],
+  products: [],
   total: 0,
-  itemCount: 0, // Initialize the itemCount state to zero
-  addItem: (item: CartItem) => {
+  itemCount: 0,
+  setProducts: (item: Product[]) => {
+    set({ products: item });
+  },
+  addItem: (item: Product) => {
     const items = get().items;
     const existingItem = items.find((i) => i.id === item.id);
     // If the item already exists in the cart, increase its quantity
@@ -71,7 +79,7 @@ export const useCartStore = create<CartState>((set, get) => ({
     // for (let item of items) {
     //   count += item.quantity;
     // }
-    count = items.length
+    count = items.length;
     return count;
   },
   clearCart: () => {
