@@ -7,7 +7,7 @@ import { FaCartShopping } from "react-icons/fa6";
 // Define the cart icon component
 const CartIcon = () => {
   // Get the number of cart items from the store using the numberCart selector
-  const { itemCount }: any = useCartStore((state) => state.itemCount);
+  const cartCount = useCartStore((state) => state.getCartCount());
 
   // Display the cart icon and the number of cart items
   return (
@@ -16,7 +16,7 @@ const CartIcon = () => {
         <div className="relative py-2">
           <div className="t-0 absolute left-3">
             <p className="flex h-2 w-2 items-center justify-center rounded-full bg-red-500 p-3 text-xs text-white">
-              {itemCount}
+              {cartCount}
             </p>
           </div>
           <svg

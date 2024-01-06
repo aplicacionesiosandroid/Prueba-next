@@ -12,16 +12,27 @@ export default function CartPage() {
 
   return (
     <div className="container mx-auto px-4">
-      <h1 className="text-3xl font-bold my-4">Your Cart</h1>
+      <div className="py-6 space-y-8">
+        <h1 className="text-3xl font-bold">Your Cart</h1>
 
-      <button
-        className="bg-amber-700 p-2 rounded-lg hover:scale-[1.03] active:scale-[.97] active:duration-75 transition-all ease-in-out"
-        onClick={() => {
-          router.push("/");
-        }}
-      >
-        HOME
-      </button>
+        <button
+          className="bg-lime-600 px-4 py-2 rounded-lg hover:scale-[1.03] active:scale-[.97] active:duration-75 transition-all ease-in-out"
+          onClick={() => {
+            router.push("/");
+          }}
+        >
+          HOME
+        </button>
+        <div className="flex flex-col sm:flex-row items-center justify-between">
+          <span className="text-2xl font-bold">Total Payable: ₹{total}</span>
+          <button
+            onClick={() => clearCart()}
+            className="bg-red-500 text-white px-4 py-2 rounded hover:scale-[1.03] active:scale-[.97] active:duration-75 transition-all ease-in-out"
+          >
+            Clear Cart
+          </button>
+        </div>
+      </div>
 
       {items.length > 0 ? (
         <div>
@@ -29,10 +40,10 @@ export default function CartPage() {
             {items.map((item) => (
               <li
                 key={item.id}
-                className="bg-[#242424] shadow rounded flex flex-col"
+                className="bg-[#242424] shadow rounded-xl flex flex-col"
               >
                 <Image
-                  className="h-64 w-auto flex flex-wrap"
+                  className="h-64 w-auto flex flex-wrap rounded-t-xl"
                   src={item.thumbnail}
                   alt={item.title}
                   height={700}
@@ -42,11 +53,11 @@ export default function CartPage() {
                   <h2 className="text-xl font-semibold mt-2">{item.title}</h2>
                   <p className="text-gray-300 mt-2">{item.description}</p>
                   <div className="flex items-center justify-between mt-4">
-                    <span className="text-lg font-bold">${item.price}</span>
+                    <span className="text-lg font-bold">₹{item.price} /-</span>
                     <div className="flex items-center space-x-2">
                       <button
                         onClick={() => removeItem(item.id)}
-                        className="bg-red-500 text-white px-2 py-1 rounded"
+                        className="bg-red-500 text-white px-2 py-1 my2 rounded"
                       >
                         -
                       </button>
@@ -63,15 +74,6 @@ export default function CartPage() {
               </li>
             ))}
           </ul>
-          <div className="flex items-center justify-between mt-8">
-            <span className="text-2xl font-bold">Total: ${total}</span>
-            <button
-              onClick={() => clearCart()}
-              className="bg-red-500 text-white px-4 py-2 rounded"
-            >
-              Clear Cart
-            </button>
-          </div>
         </div>
       ) : (
         <div className="text-center">

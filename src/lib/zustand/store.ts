@@ -18,16 +18,7 @@ export type CartState = {
   addItem: (item: CartItem) => void;
   removeItem: (id: string) => void;
   clearCart: () => void;
-  numberCart: (state: CartState) => number;
-  updateItemCount: (count: number) => void; // Add a new action to update the itemCount state
-};
-
-// Define the numberCart selector function
-const numberCart = (state: CartState) => {
-  // Get the items array from the state
-  const { items } = state;
-  // Return the length of the items array
-  return items.length;
+  getCartCount: () => number;
 };
 
 // Create the cart store with an initial state
@@ -55,9 +46,6 @@ export const useCartStore = create<CartState>((set, get) => ({
         total: state.total + item.price,
       }));
     }
-    // Update the itemCount state with the new length of the items array
-    // Use the items variable instead of the updatedItems variable
-    get().updateItemCount(items.length);
   },
   removeItem: (id: string) => {
     const items = get().items;
@@ -75,27 +63,23 @@ export const useCartStore = create<CartState>((set, get) => ({
         items: updatedItems,
         total: state.total - itemToRemove.price,
       }));
-      // Update the itemCount state with the new length of the items array
-      // Use the items variable instead of the updatedItems variable
-      get().updateItemCount(items.length);
     }
+  },
+  getCartCount: () => {
+    const items = get().items;
+    let count = 0;
+    // for (let item of items) {
+    //   count += item.quantity;
+    // }
+    count = items.length
+    return count;
   },
   clearCart: () => {
     // Reset the cart state to the initial values
     set(() => ({
       items: [],
       total: 0,
-      itemCount: 0, // Reset the itemCount state to zero
-    }));
-    const cartCount = numberCart(get());
-    // Do something with the cartCount value, such as logging it to the console
-    console.log("Cart count:", cartCount);
-  },
-  numberCart: (state) => numberCart(state),
-  updateItemCount: (count: number) => {
-    // Define the updateItemCount action that sets the itemCount state to the given count parameter
-    set(() => ({
-      itemCount: count,
+      itemCount: 0,
     }));
   },
 }));
