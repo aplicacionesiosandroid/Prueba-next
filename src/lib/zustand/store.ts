@@ -32,7 +32,8 @@ export const useCartStore = create<CartState & CartAction>((set, get) => ({
   total: 0,
   itemCount: 0,
   setProducts: (item: Product[]) => {
-    set({ products: item });
+    const updatedItems = [...item];
+    set({ products: updatedItems });
   },
   addItem: (item: Product) => {
     const items = get().items;

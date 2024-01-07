@@ -1,36 +1,33 @@
-// // import { Product } from "@/lib/types/product.type";
-// import { CartItem } from "@/lib/zustand/store";
-// import ProductItem from "@/components/ProductItem/ProductItem";
+"use client";
+import { useEffect } from "react";
+import { useCartStore } from "@/lib/zustand/store";
+import ProductItem from "@/components/ProductItem/ProductItem";
+import CartIcon from "@/components/Navbar/CartCount";
+import { fetchProducts } from "@/api/fetchProduct";
 
-// // define the interface for the props
-// interface ProductsPageProps {
-//   products: CartItem[]; // an array of products
-// }
+const ProductsPage = () => {
+  const { setProducts, products } = useCartStore();
 
-// // fetch data from dummyjson site at build time
-// const GetProducts = async () => {
-//   const res = await fetch("https://dummyjson.com/products");
-//   const data = await res.json();
-//   const products = data.products;
+  useEffect(() => {
+    const fetchData = async () => {
+      const productsData = await fetchProducts();
+      setProducts(productsData);
+    };
 
-//   return {
-//     products,
-//   };
-// };
+    fetchData();
+  }, [setProducts]);
 
-// // display products in page component
-// export default async function ProductsPage() {
-//   const { products }: { products: CartItem[] } = await GetProducts();
-//   return (
-//     <div>
-//       <h1>Products</h1>
-//       <ul>
-//         {products.map((product) => (
-//           <li key={product.id}>
-//             <ProductItem product={product} />
-//           </li>
-//         ))}
-//       </ul>
-//     </div>
-//   );
-// }
+  return (
+    <div>
+      <ul className="flex flex-wrap gap-6 justify-center items-center">
+        {products.map((product) => (
+          <li key={product.id}>
+            <ProductItem product={product} />
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default ProductsPage;
