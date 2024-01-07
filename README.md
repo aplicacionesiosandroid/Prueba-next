@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# NextJS E-commerce App with Zustand
 
-## Getting Started
+This is a NextJS 14 app that demonstrates how to use Zustand for global state management. Zustand is a small, fast and scalable state management solution that uses React hooks. It allows you to create and access global stores from any component, and perform actions such as adding, removing, and updating items in the cart.
 
-First, run the development server:
+The app fetches product data from dummyjson and displays them in a grid layout using Tailwind CSS. Users can add products to the cart, view the cart details, and change the quantity or remove items from the cart. The app also shows the total price and number of items in the cart.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Requirements
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Node.js 14 or higher
+- npm 7 or higher
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+To install the app, follow these steps:
 
-## Learn More
+1. Clone the repository: `git clone https://github.com/Subhasish-Negel/zustand-product-store.git`
+2. Navigate to the project directory: `cd zustand-product-store`
+3. Install the dependencies: `npm install`
+4. Run the app in development mode: `npm run dev`
+5. Open http://localhost:3000 in your browser to see the app
 
-To learn more about Next.js, take a look at the following resources:
+## Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- NextJS 14 app with TypeScript and App router
+- Zustand for global state management
+- Tailwind CSS for styling
+- Dummyjson for product data
+- Cart functionality with add, remove, and update actions
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Contributing
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+If you want to contribute to this project, feel free to fork the repository and make a pull request. You can also open an issue if you find a bug or have a suggestion.
