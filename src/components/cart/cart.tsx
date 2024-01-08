@@ -1,4 +1,3 @@
-import ProductItem from "@/components/ProductItem/ProductItem";
 import { useCartStore } from "@/lib/zustand/store";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,14 +14,6 @@ export default function CartPage() {
       <div className="py-6 space-y-8">
         <h1 className="text-3xl font-bold">Your Cart</h1>
 
-        <button
-          className="bg-lime-600 px-4 py-2 rounded-lg hover:scale-[1.03] active:scale-[.97] active:duration-75 transition-all ease-in-out"
-          onClick={() => {
-            router.push("/");
-          }}
-        >
-          HOME
-        </button>
         <div className="flex flex-col sm:flex-row items-center justify-between">
           <span className="text-2xl font-bold">Total Payable: ₹{total}</span>
           <button
@@ -78,7 +69,7 @@ export default function CartPage() {
       ) : (
         <div className="text-center">
           <p className="text-gray-600">Your cart is empty.</p>
-          <Link href="/">
+          <Link href="/products">
             <p className="text-blue-500 hover:underline">Go back to shop</p>
           </Link>
         </div>

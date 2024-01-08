@@ -2,8 +2,7 @@
 import { useEffect } from "react";
 import { useCartStore } from "@/lib/zustand/store";
 import ProductItem from "@/components/ProductItem/ProductItem";
-import CartIcon from "@/components/Navbar/CartCount";
-import { fetchProducts } from "@/api/fetchProduct";
+import { fetchProducts } from "@/lib/api/fetchProduct";
 
 const ProductsPage = () => {
   const { setProducts, products } = useCartStore();
