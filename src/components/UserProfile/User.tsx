@@ -13,7 +13,6 @@ interface User {
   lastName: string;
   gender: string;
   image: string;
-  // Add other user fields as needed
 }
 
 const User = () => {
@@ -23,10 +22,7 @@ const User = () => {
   useEffect(() => {
     // Check if the user is logged in by verifying the token in local storage
     const token = localStorage.getItem("token");
-    if (!token) {
-      // If the user is not logged in, redirect to the login page
-      router.push("/login");
-    } else {
+    {
       // Fetch user data using the provided API request
       fetch("https://dummyjson.com/auth/me", {
         method: "GET",

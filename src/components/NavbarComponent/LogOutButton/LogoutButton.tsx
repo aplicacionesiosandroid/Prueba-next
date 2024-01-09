@@ -1,14 +1,11 @@
 "use client";
-import { useRouter } from "next/navigation";
 
 const LogoutButton = () => {
-  const router = useRouter();
-
   const handleLogout = () => {
     // Remove the token from local storage
     localStorage.removeItem("token");
     // Redirect to the homepage
-    router.push("/");
+    window.location.href = "/";
   };
 
   return (
