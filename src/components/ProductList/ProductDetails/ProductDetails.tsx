@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { IProduct } from "@/lib/types/product.type";
 import { useParams } from "next/navigation";
 import Image from "next/image";
+import { MdOutlineAddShoppingCart } from "react-icons/md";
 
 const ProductDetails = () => {
   const params = useParams();
@@ -30,14 +31,16 @@ const ProductDetails = () => {
           alt={product.title}
           height={500}
           width={500}
+          priority
         />
         <p className="mb-4">{product.description}</p>
         <p className="font-bold mb-4">${product.price}</p>
         <button
+          className="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 active:bg-blue-700 mt-4 flex items-center justify-center hover:scale-[1.03] active:scale-[.97] active:duration-75 transition-all ease-in-out"
           onClick={() => addItem(product)}
-          className="bg-blue-500 text-white px-4 py-2 rounded"
         >
-          Add to Cart
+          {"  "}
+          Add to order <MdOutlineAddShoppingCart className=" text-2xl mx-2" />
         </button>
       </div>
     </div>

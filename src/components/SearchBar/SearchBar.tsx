@@ -6,7 +6,6 @@ import { useCartStore } from "@/lib/zustand/store";
 const Searchbar = () => {
   const [activeSearch, setActiveSearch] = useState<string[]>([]);
   const { products } = useCartStore();
-  console.log(products)
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     const searchTerm = e.target.value.toLowerCase();
