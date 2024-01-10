@@ -30,7 +30,6 @@ const Navbar = () => {
         <HomePageButton />
         <ProductPageButton />
         <UserProfileButton />
-        <Link href="/testing"> Go To Testing Page </Link>
       </div>
       <div className="flex gap-6">
         {isUserLoggedIn ? <LogoutButton /> : <LoginButton />}
