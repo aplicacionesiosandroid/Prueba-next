@@ -3,9 +3,10 @@ import React, { useState, ChangeEvent } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useCartStore } from "@/lib/zustand/store";
 
-const Searchbar: React.FC = () => {
+const Searchbar = () => {
   const [activeSearch, setActiveSearch] = useState<string[]>([]);
-  const { setProducts, products } = useCartStore();
+  const { products } = useCartStore();
+  console.log(products)
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     const searchTerm = e.target.value.toLowerCase();
@@ -15,12 +16,9 @@ const Searchbar: React.FC = () => {
       return false;
     }
 
-    // Assuming products is an array of objects with a 'title' property
     const filteredProducts = products.filter((product) =>
       product.title.toLowerCase().includes(searchTerm)
     );
-
-    
 
     // Extracting only a limited number of suggestions
     const suggestions = filteredProducts

@@ -1,9 +1,9 @@
-import { Product } from "@/lib/types/product.type";
+import { IProduct } from "@/lib/types/product.type";
 
 export type CartAction = {
-    setProducts: (item: Product[]) => void;
-    addItem: (item: Product) => void;
-    removeItem: (id: string) => void;
+    setProducts: (item: IProduct[]) => void;
+    addItem: (item: IProduct) => void;
+    removeItem: (id: number) => void;
     clearCart: () => void;
     getCartCount: () => number;
   };

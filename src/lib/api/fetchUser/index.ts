@@ -8,4 +8,3 @@ fetch("https://dummyjson.com/auth/login", {
   }),
 })
   .then((res) => res.json())
-  .then(console.log);

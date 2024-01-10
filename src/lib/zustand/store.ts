@@ -1,7 +1,7 @@
 // Import Zustand and create a store
 import { create } from "zustand";
 
-import { Product } from "@/lib/types/product.type";
+import { IProduct } from "@/lib/types/product.type";
 import { CartState } from "@/lib/types/cartState.type";
 import { CartAction } from "@/lib/types/cartAction.type";
 
@@ -11,11 +11,11 @@ export const useCartStore = create<CartState & CartAction>((set, get) => ({
   products: [],
   total: 0,
   itemCount: 0,
-  setProducts: (item: Product[]) => {
+  setProducts: (item: IProduct[]) => {
     const updatedItems = [...item];
     set({ products: updatedItems });
   },
-  addItem: (item: Product) => {
+  addItem: (item: IProduct) => {
     const items = get().items;
     const existingItem = items.find((i) => i.id === item.id);
     // If the item already exists in the cart, increase its quantity
@@ -36,7 +36,7 @@ export const useCartStore = create<CartState & CartAction>((set, get) => ({
       }));
     }
   },
-  removeItem: (id: string) => {
+  removeItem: (id: number) => {
     const items = get().items;
     const itemToRemove = items.find((i) => i.id === id);
     // If the item exists in the cart, decrease its quantity or remove it

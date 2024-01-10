@@ -16,7 +16,6 @@ const ProductsPage = () => {
 
     fetchData();
   }, [setProducts]);
-
   return (
     <div>
       <div className="flex justify-center items-center my-4">

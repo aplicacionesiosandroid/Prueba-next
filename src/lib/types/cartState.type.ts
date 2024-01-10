@@ -1,8 +1,8 @@
-import { Product } from "@/lib/types/product.type";
+import { IProduct } from "@/lib/types/product.type";
 
 export type CartState = {
-    items: Product[] | [];
-    products: Product[] | [];
+    items: IProduct[] | [];
+    products: IProduct[] | [];
     total: number;
     itemCount: number;
   };

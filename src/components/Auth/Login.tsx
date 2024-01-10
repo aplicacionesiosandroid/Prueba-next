@@ -18,7 +18,6 @@ const Login = () => {
 
       if (data.token) {
         localStorage.setItem("token", data.token);
-        console.log("Login successful! Token:", data.token);
 
         // Go back to the previous page
         window.history.back();

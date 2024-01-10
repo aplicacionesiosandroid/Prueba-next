@@ -7,6 +7,7 @@ import LogoutButton from "@/components/NavbarComponent/LogOutButton/LogoutButton
 import LoginButton from "@/components/NavbarComponent/LoginButton/LoginButton";
 import ProductPageButton from "@/components/NavbarComponent/ProductPageButton";
 import UserProfileButton from "@/components/NavbarComponent/UserProfileButton/UserProfileButton";
+import Link from "next/link";
 
 // Define the cart icon component
 const Navbar = () => {
@@ -29,6 +30,7 @@ const Navbar = () => {
         <HomePageButton />
         <ProductPageButton />
         <UserProfileButton />
+        <Link href="/testing"> Go To Testing Page </Link>
       </div>
       <div className="flex gap-6">
         {isUserLoggedIn ? <LogoutButton /> : <LoginButton />}
