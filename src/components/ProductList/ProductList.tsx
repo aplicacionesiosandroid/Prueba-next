@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useCartStore } from "@/lib/zustand/store";
 import ProductItem from "@/components/ProductItem/ProductItem";
 import { fetchProducts } from "@/lib/api/fetchProduct";
+import Searchbar from "@/components/SearchBar/SearchBar";
 
 const ProductsPage = () => {
   const { setProducts, products } = useCartStore();
@@ -18,6 +19,9 @@ const ProductsPage = () => {
 
   return (
     <div>
+      <div className="flex justify-center items-center my-4">
+        <Searchbar />
+      </div>
       <ul className="flex flex-wrap gap-6 justify-center items-center">
         {products.map((product) => (
           <li key={product.id}>

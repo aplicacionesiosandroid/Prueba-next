@@ -1,5 +1,5 @@
 "use client";
-import { Product } from "@/lib/zustand/store";
+import { Product } from "@/lib/types/product.type";
 // import { Product } from "@/lib/types/product.type";
 
 import { useCartStore } from "@/lib/zustand/store";

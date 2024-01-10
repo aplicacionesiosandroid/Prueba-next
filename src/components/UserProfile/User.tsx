@@ -64,8 +64,8 @@ const User = () => {
             className="w-24 h-24 rounded-full mx-auto"
             src={userData.image}
             alt="Profile Picture"
-            height={200}
-            width={200}
+            height={100}
+            width={100}
           ></Image>
         </div>
         {/* Add additional user-specific content here */}

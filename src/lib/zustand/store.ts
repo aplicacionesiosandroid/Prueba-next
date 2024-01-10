@@ -1,29 +1,9 @@
 // Import Zustand and create a store
 import { create } from "zustand";
 
-// Define the state and actions for the cart store
-export type Product = {
-  id: string;
-  title: string;
-  description: string;
-  price: number;
-  quantity: number;
-  thumbnail: string;
-};
-
-export type CartState = {
-  items: Product[] | [];
-  products: Product[] | [];
-  total: number;
-  itemCount: number;
-};
-export type CartAction = {
-  setProducts: (item: Product[]) => void;
-  addItem: (item: Product) => void;
-  removeItem: (id: string) => void;
-  clearCart: () => void;
-  getCartCount: () => number;
-};
+import { Product } from "@/lib/types/product.type";
+import { CartState } from "@/lib/types/cartState.type";
+import { CartAction } from "@/lib/types/cartAction.type";
 
 // Create the cart store with an initial state
 export const useCartStore = create<CartState & CartAction>((set, get) => ({
