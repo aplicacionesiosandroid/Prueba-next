@@ -1,18 +1,12 @@
-"use client";
 import { IProduct } from "@/lib/types/product.type";
-import { useCartStore } from "@/lib/zustand/store";
 import Image from "next/image";
 import Link from "next/link";
-import { MdOutlineAddShoppingCart } from "react-icons/md";
-import { useRouter } from "next/navigation";
 import AddtoCart from "@/components/CustomComponents/AddToCartButton";
 interface ProductItemProps {
   product: IProduct;
 }
 
 function ProductItem({ product }: ProductItemProps) {
-  const router = useRouter();
-
   return (
     <div className="w-80 bg-gray-700 shadow rounded">
       <Link
