@@ -30,7 +30,7 @@ To install the app, follow these steps:
 
 ## **⚠️ Must Read ⚠️**
 
-The user authorization is provided by dummyjson, which means you need to use a valid username and password from the user data provided by dummyjson. You can find the user data at this link: https://dummyjson.com/users
+The user authorization is provided by dummyjson, which means you need to use a valid username and password from the user data provided by dummyjson. You can find the user data at this link: [here](https://dummyjson.com/users)
 
 
 ## Contributing
