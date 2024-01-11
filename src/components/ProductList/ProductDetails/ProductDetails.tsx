@@ -29,8 +29,8 @@ const ProductDetails = () => {
           className="w-[400px] h-[400px] object-cover mb-4 rounded-lg"
           src={product.thumbnail}
           alt={product.title}
-          height={500}
-          width={500}
+          height={300}
+          width={300}
           priority
         />
         <p className="mb-4">{product.description}</p>

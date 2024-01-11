@@ -26,6 +26,12 @@ To install the app, follow these steps:
 - Tailwind CSS for styling
 - Dummyjson for product data
 - Cart functionality with add, remove, and update actions
+- User authorization with dummyjson
+
+## **⚠️ Must Read ⚠️**
+
+The user authorization is provided by dummyjson, which means you need to use a valid username and password from the user data provided by dummyjson. You can find the user data at this link: https://dummyjson.com/users
+
 
 ## Contributing
 
