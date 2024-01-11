@@ -23,6 +23,7 @@ To install the app, follow these steps:
 
 - NextJS 14 app with TypeScript and App router
 - Zustand for global state management
+- Zustand Persist to keep cart data intact after refresh & browser close 
 - Tailwind CSS for styling
 - Dummyjson for product data
 - Cart functionality with add, remove, and update actions
