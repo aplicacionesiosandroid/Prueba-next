@@ -1,6 +1,6 @@
 // Import Zustand and create a store
 import { create } from "zustand";
-import { persist, createJSONStorage } from "zustand/middleware";
+import { persist } from "zustand/middleware";
 import { IProduct } from "@/lib/types/product.type";
 import { CartState } from "@/lib/types/cartState.type";
 import { CartAction } from "@/lib/types/cartAction.type";
@@ -9,6 +9,7 @@ import { CartAction } from "@/lib/types/cartAction.type";
 export const useCartStore = create<CartState & CartAction>()(
   persist(
     (set, get) => ({
+      filteredProducts: [],
       items: [],
       products: [],
       total: 0,
@@ -16,6 +17,9 @@ export const useCartStore = create<CartState & CartAction>()(
       setProducts: (item: IProduct[]) => {
         const updatedItems = [...item];
         set({ products: updatedItems });
+      },
+      setFilteredProducts: (products: IProduct[]) => {
+        set({ filteredProducts: products });
       },
       addItem: (item: IProduct) => {
         const items = get().items;
@@ -68,6 +72,14 @@ export const useCartStore = create<CartState & CartAction>()(
           }));
         }
       },
+      filterProductsByPrice: (lowerPrice: number, higherPrice: number) => {
+        const allProducts = get().products;
+        const filteredProducts = allProducts.filter(
+          (product) =>
+            product.price >= lowerPrice && product.price <= higherPrice
+        );
+        get().setFilteredProducts(filteredProducts);
+      },
       getCartCount: () => {
         const items = get().items;
         let count = 0;
@@ -88,6 +100,7 @@ export const useCartStore = create<CartState & CartAction>()(
     }),
     {
       name: "zustandProduct&CartbySN",
+      partialize: (state) => ({ items: state.items, products: state.products }),
     }
   )
 );

@@ -4,9 +4,11 @@ import { useCartStore } from "@/lib/zustand/store";
 import ProductItem from "@/components/ProductItem/ProductItem";
 import { fetchProducts } from "@/lib/api/fetchProduct";
 import Searchbar from "@/components/SearchBar/SearchBar";
+import PriceFilter from "@/components/PriceFilter/PriceFilter";
 
 const ProductsPage = () => {
   const { setProducts, products } = useCartStore();
+  const { filteredProducts } = useCartStore();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,14 +22,23 @@ const ProductsPage = () => {
   return (
     <div>
       <div className="flex justify-center items-center my-4">
-        <Searchbar />
+        <div className="flex flex-col space-y-4">
+          <PriceFilter />
+          <Searchbar />
+        </div>
       </div>
       <ul className="flex flex-wrap gap-6 justify-center items-center">
-        {products.map((product) => (
-          <li key={product.id}>
-            <ProductItem product={product} />
-          </li>
-        ))}
+        {filteredProducts.length > 0
+          ? filteredProducts.map((product) => (
+              <li key={product.id}>
+                <ProductItem product={product} />
+              </li>
+            ))
+          : products.map((product) => (
+              <li key={product.id}>
+                <ProductItem product={product} />
+              </li>
+            ))}
       </ul>
     </div>
   );

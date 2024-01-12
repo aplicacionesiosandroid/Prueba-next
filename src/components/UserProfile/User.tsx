@@ -1,40 +1,28 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
-
-// Define the User interface
-interface User {
-  id: number;
-  username: string;
-  email: string;
-  firstName: string;
-  lastName: string;
-  gender: string;
-  image: string;
-}
+import { IUser } from "@/lib/types/userData.type";
 
 const User = () => {
-  const [userData, setUserData] = useState<User | null>(null); // Use the User interface for userData
-  const router = useRouter();
+  const [userData, setUserData] = useState<IUser | null>(null); // Use the User interface for userData
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
-    // Check if the user is logged in by verifying the token in local storage
-    const token = localStorage.getItem("token");
     {
       // Fetch user data using the provided API request
       fetch("https://dummyjson.com/auth/me", {
+        next: { revalidate: 3600 },
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
         .then((res) => res.json())
-        .then((data: User) => setUserData(data)) // Use the User interface for data
+        .then((data: IUser) => setUserData(data)) // Use the User interface for data
         .catch((error) => console.error("Error fetching user data:", error));
     }
-  }, [router]);
+  }, [token]);
 
   if (!userData) {
     // Render nothing while checking login status, redirecting, or fetching user data
@@ -44,10 +32,8 @@ const User = () => {
   // Render the User component content with user data
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-300">
-      <div className="w-96 bg-gray-800 p-8 shadow-md rounded-md">
-        <h1 className="text-2xl font-bold mb-4 text-center">
-          User Information
-        </h1>
+      <div className="w-96 bg-gray-800 p-8 shadow-2xl rounded-md">
+        <h1 className="text-2xl font-bold mb-4 text-center">Your Profile</h1>
         <div className="mb-4">
           <p className="text-lg font-semibold">
             Full Name: {userData.firstName} {userData.lastName}
@@ -64,8 +50,8 @@ const User = () => {
             className="w-24 h-24 rounded-full mx-auto"
             src={userData.image}
             alt="Profile Picture"
-            height={100}
-            width={100}
+            height={70}
+            width={70}
           ></Image>
         </div>
         {/* Add additional user-specific content here */}

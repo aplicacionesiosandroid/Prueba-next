@@ -53,7 +53,11 @@ const Searchbar = () => {
       {activeSearch.length > 0 && (
         <div className="absolute top-20 bg-slate-800 text-white w-full rounded-xl left-1/2 -translate-x-1/2 flex flex-col">
           {activeSearch.map((suggestion) => (
-            <Link className="hover:bg-slate-600 p-2 text-lg font-semibold rounded-2xl" key={suggestion.id} href={`/products/${suggestion.id}`}>
+            <Link
+              className="hover:bg-slate-600 p-2 text-lg font-semibold rounded-2xl"
+              key={suggestion.id}
+              href={`/products/${suggestion.id}`}
+            >
               <span>{suggestion.title}</span>
             </Link>
           ))}
