@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useState } from "react";
 
 const Login = () => {
@@ -45,8 +46,19 @@ const Login = () => {
       <div className="h-screen flex items-center justify-center bg-gray-500">
         <div className="w-96 bg-white p-8 shadow-md rounded-md">
           <h1 className="text-2xl font-bold mb-4 text-center text-black">
-            Login
+            User Login
           </h1>
+
+          <p className="text-black text-xs font-semibold text-center my-4">
+            Get Dummy Credentials from{" "}
+            <Link
+              className="text-blue-500 underline hover:text-blue-600"
+              target="_blank"
+              href="https://dummyjson.com/users"
+            >
+              Here
+            </Link>
+          </p>
           {errorMessage && (
             <p className="text-red-500 text-sm mb-4 text-center">
               {errorMessage}
@@ -86,7 +98,7 @@ const Login = () => {
           </div>
           <button
             onClick={handleLogin}
-            className="bg-blue-500 text-white px-4 py-2 rounded-md w-full hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
+            className="py-2 bg-blue-500 text-white hover:bg-blue-600 active:bg-blue-700 mt-4 w-full flex items-center justify-center hover:scale-[1.03] active:scale-[.97] active:duration-75 transition-all ease-in-out rounded-md"
           >
             Login
           </button>

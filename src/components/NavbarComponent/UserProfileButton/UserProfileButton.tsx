@@ -11,7 +11,7 @@ const UserProfileButton = () => {
           router.push("/user");
         }}
       >
-        Profile
+        Profile (Protected Route)
       </button>
     </div>
   );
