@@ -1,4 +1,5 @@
 export interface IUser {
+  message: string;
   id: number;
   username: string;
   email: string;
@@ -6,4 +7,10 @@ export interface IUser {
   lastName: string;
   gender: string;
   image: string;
+}
+
+export interface TokenExpiredError {
+  expiredAt: string;
+  message: string;
+  name: string;
 }

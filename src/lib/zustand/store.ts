@@ -100,7 +100,11 @@ export const useCartStore = create<CartState & CartAction>()(
     }),
     {
       name: "zustandProduct&CartbySN",
-      partialize: (state) => ({ items: state.items, products: state.products }),
+      partialize: (state) => ({
+        items: state.items,
+        products: state.products,
+        total: state.total,
+      }),
     }
   )
 );

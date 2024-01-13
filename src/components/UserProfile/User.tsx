@@ -6,6 +6,7 @@ import { IUser } from "@/lib/types/userData.type";
 
 const User = () => {
   const [userData, setUserData] = useState<IUser | null>(null); // Use the User interface for userData
+  const [error, setError] = useState(null); // Use a state variable to store the error
   const token = localStorage.getItem("token");
 
   useEffect(() => {
@@ -19,16 +20,35 @@ const User = () => {
         },
       })
         .then((res) => res.json())
-        .then((data: IUser) => setUserData(data)) // Use the User interface for data
-        .catch((error) => console.error("Error fetching user data:", error));
+        .then((data: IUser) => {
+          // Check if the response contains an error message
+          if (!data.username) {
+            localStorage.removeItem("token");
+            alert("Session Expired, Please Login Again");
+            window.location.href = "/";
+          } else {
+            setUserData(data);
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching user data:", error);
+          setError(error); // Set the error state
+        });
     }
   }, [token]);
+
+  if (error) {
+    return (
+      <div className="App">
+        Something went wrong: {(error as Error).message}
+      </div>
+    );
+  }
 
   if (!userData) {
     // Render nothing while checking login status, redirecting, or fetching user data
     return null;
   }
-
   // Render the User component content with user data
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-300">
@@ -52,6 +72,7 @@ const User = () => {
             alt="Profile Picture"
             height={70}
             width={70}
+            priority
           ></Image>
         </div>
         {/* Add additional user-specific content here */}
