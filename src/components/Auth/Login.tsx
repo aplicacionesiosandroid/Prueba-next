@@ -50,7 +50,7 @@ const Login = () => {
           </h1>
 
           <p className="text-black text-xs font-semibold text-center my-4">
-            Get Dummy Credentials from{" "}
+            Get User Credentials from DummyJson{" "}
             <Link
               className="text-blue-500 underline hover:text-blue-600"
               target="_blank"
