@@ -11,6 +11,7 @@
   "dependencies": {
     "@tabler/icons-react": "^2.45.0",
     "embla-carousel-react": "8.0.0-rc18",
+    "framer-motion": "^10.18.0",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
