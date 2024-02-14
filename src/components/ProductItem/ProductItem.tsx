@@ -24,7 +24,7 @@ function ProductItem({ product }: ProductItemProps) {
       </Link>
       <div className="p-4 flex flex-col items-center">
         <Link
-          className="border-b border-transparent hover:border-b-white"
+          className="border-b border-transparent hover:border-b-white h-[40px]"
           href={`/products/${product.id}`}
         >
           {product.title}
