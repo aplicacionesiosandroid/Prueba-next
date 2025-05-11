@@ -37,3 +37,7 @@ The user authorization is provided by dummyjson, which means you need to use a v
 ## Contributing
 
 If you want to contribute to this project, feel free to fork the repository and make a pull request. You can also open an issue if you find a bug or have a suggestion.
+
+
+
+compilacion para pruebas developer jr
